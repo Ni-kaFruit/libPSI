@@ -122,7 +122,7 @@ namespace osuCrypto
 			}
 			//////////////// Extend OTs and compute matrix C ///////////////////
 			for (auto i = 0; i < w; ++i) {
-				PRNG prng(otMessages[i + wLeft]);
+				PRNG prng(otMessages[u64(i + wLeft)]);
 				prng.get(matrixC[i], heightInBytes);
 				chl.recv(recvMatrix, heightInBytes);
 				if (choices[i + wLeft]) {
