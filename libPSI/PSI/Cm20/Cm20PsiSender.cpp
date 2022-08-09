@@ -125,7 +125,8 @@ namespace osuCrypto
 				PRNG prng(otMessages[i + wLeft]);
 				prng.get(matrixC[i], heightInBytes);
 				chl.recv(recvMatrix, heightInBytes);
-				if (choices[u64(i + wLeft)]) {
+                u64 t = i + wLeft;
+				if (choices[t]) {
 					for (auto j = 0; j < heightInBytes; ++j) {
 						matrixC[i][j] ^= recvMatrix[j];
 					}
