@@ -6,6 +6,7 @@
 #include "cryptoTools/Common/Timer.h"
 #include "libOTe/Base/BaseOT.h"
 #include "libOTe/TwoChooseOne/IknpOtExtReceiver.h"
+#include "cryptoTools/Common/BitVector.h"
 
 namespace osuCrypto
 {
@@ -125,8 +126,7 @@ namespace osuCrypto
 				PRNG prng(otMessages[i + wLeft]);
 				prng.get(matrixC[i], heightInBytes);
 				chl.recv(recvMatrix, heightInBytes);
-                u64 t = i + wLeft;
-				if (choices[t]) {
+				if (choices[i + wLeft]) {
 					for (auto j = 0; j < heightInBytes; ++j) {
 						matrixC[i][j] ^= recvMatrix[j];
 					}
